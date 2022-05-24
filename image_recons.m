@@ -1,14 +1,14 @@
-function image_recons(titlex,k,U_est,S_est,V_est)
-%image construction
+function [imagelist] = image_recons(titlex,montagenumber,n,k,U_est,S_est,V_est)
+%image construction for 
     data = im2uint8(U_est*S_est*V_est');
-im=zeros(32,32,3);
-for cpt=1:100
-    R=data(cpt,1:1024);
-    G=data(cpt,1025:2048);
-    B=data(cpt,2049:3072);
+im=zeros(sqrt(n/3),sqrt(n/3),3);
+for cpt=1:montagenumber %Number of images in a montage 
+    R=data(cpt,1:n/3);
+    G=data(cpt,n/3+1:2*n/3);
+    B=data(cpt,2*n/3+1:n);
     k=1;
-    for x=1:32
-        for i=1:32
+    for x=1:sqrt(n/3)
+        for i=1:sqrt(n/3)
             im(x,i,1)=R(k);
             im(x,i,2)=G(k);
             im(x,i,3)=B(k);
