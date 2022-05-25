@@ -5,5 +5,6 @@ im=reshape(data,m,n/3,3);
 image=uint8(im);  
 figure
 imshow(image)
-title(titlex)
+str = strcat(titlex, num2str(k));
+title(str)
 end
